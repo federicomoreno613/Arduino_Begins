@@ -14,8 +14,8 @@ void setup() {
 void loop() {
     if (digitalRead(2)==LOW && ledstate==0) { // if the button is pressed and the LED is off
         ledstate=1; // set the LED state to on
-        digitalWrite(7, HIGH); // turn on the LED on the board
-        digitalWrite(8, HIGH);
+        digitalWrite(7, !digitalRead(7)); // turn on the LED on the board
+        digitalWrite(8, !digitalRead(8)); // turn on the LED on the board
     }
     else if (digitalRead(2)==HIGH && ledstate==1) { // if the button is not pressed and the LED is on
         ledstate=0; // set the LED state to off
