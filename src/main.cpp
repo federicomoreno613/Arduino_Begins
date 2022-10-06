@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-boolean prendido = false;
+bool ledstate =0;
 void setup() {
     // initialize digital pin LED_BUILTIN as an output
     pinMode(2, INPUT_PULLUP);
@@ -10,14 +10,17 @@ void setup() {
 
 }
 
-// turn on with button
+// This loop function is for turning on and off the LED on the board with a button
 void loop() {
-    delay(200);
-    if (!digitalRead(2)) {
-        prendido = !prendido;
+    if (digitalRead(2)==LOW && ledstate==0) { // if the button is pressed and the LED is off
+        ledstate=1; // set the LED state to on
+        digitalWrite(7, HIGH); // turn on the LED on the board
+        digitalWrite(8, HIGH);
     }
-        digitalWrite(7, prendido);
-        digitalWrite(8, prendido);
+    else if (digitalRead(2)==HIGH && ledstate==1) { // if the button is not pressed and the LED is on
+        ledstate=0; // set the LED state to off
+        digitalWrite(7, LOW); // turn off the LED on the board
+        digitalWrite(8, LOW);
+    }
 
-
-}
+    }
