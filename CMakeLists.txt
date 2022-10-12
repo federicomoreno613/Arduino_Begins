@@ -30,4 +30,4 @@ add_custom_target(
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-add_executable(Z_DUMMY_TARGET ${SRC_LIST} test/version_1_sin_estados.cpp test/version_3.cpp)
+add_executable(Z_DUMMY_TARGET ${SRC_LIST} code_examples/01_turn_on_off_withoutstates.cpp code_examples/02_two_states.cpp)

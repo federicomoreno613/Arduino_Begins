@@ -6,13 +6,11 @@ int lastButtonState = LOW;
 unsigned long lastDebounceTime = 0;
 
 unsigned long debounceDelay = 50;
-unsigned long timer = 0;
 
 boolean led1 = 0;
 boolean led2 = 0;
 unsigned long now;
 void setup() {
-    Serial.begin(9600);
     pinMode(2, INPUT_PULLUP);
     pinMode(7, OUTPUT);
     pinMode(6, OUTPUT);
@@ -42,7 +40,6 @@ boolean debounce(int pinToRead, int debDelay) {
 void loop() {
     if (debounce(2, debounceDelay)){
         veces++;
-        Serial.println(veces);
     }
 
     switch(veces) {
@@ -60,11 +57,14 @@ void loop() {
             digitalWrite(6, true);
             break;
         case 4:
-            if (millis()-timer> 500) {
-                digitalWrite(6, !digitalRead(6)) ;
-                digitalWrite(7, !digitalRead(7)) ;
-                timer = millis();
-            }
+            now = millis();
+
+            digitalWrite(7, true) ;
+            digitalWrite(6, true) ;
+            delay(50);
+            digitalWrite(7, false);
+            digitalWrite(6, false);
+            delay(50);
             break;
         case 5:
             digitalWrite(7, false);
