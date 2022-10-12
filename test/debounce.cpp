@@ -43,7 +43,7 @@ unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
 unsigned long debounceDelay = 50;    // the debounce time; increase if the output flickers
 
 void setup() {
-    pinMode(buttonPin, INPUT_PULLUP); //INPUT_PULLUP is the same as INPUT but with a pullup resistor
+    pinMode(buttonPin, INPUT_PULLUP);
     pinMode(ledPin, OUTPUT);
 
     // set initial LED state
